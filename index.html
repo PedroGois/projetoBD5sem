@@ -2,22 +2,86 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Tela Inicial</title>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #333; /* Cor de fundo cinza escuro */
+            font-family: Arial, sans-serif;
+            color: #fff; /* Cor do texto branco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #222; /* Cor de fundo cinza mais escuro */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF; /* Cor do título azul */
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            color: #fff; /* Cor do texto branco */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #007BFF; /* Cor da borda azul */
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF; /* Cor do botão azul */
+            color: #fff; /* Cor do texto branco */
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Cor do botão azul mais escuro ao passar o mouse */
+        }
+
+        p {
+            color: #888; /* Cor do texto cinza claro */
+        }
+
+        a {
+            color: #007BFF; /* Cor do link azul */
+        }
+    </style>
 </head>
 <body>
-    <h1>Tela Inicial</h1>
+    <div class="login-container">
+        <h1>Login</h1>
 
-    <p>
-        <a href="alterarcliente.php">Lista de Clientes</a>
-    </p>
-    
-    <p>
-        <a href="lista_produtos.php">Lista de Produtos</a>
-    </p>
+        <form action="autenticar.php" method="POST">
+            <label for="login">Login:</label>
+            <input type="text" name="login" required><br>
 
-    <p>
-        <a href="lista_pedidos.php">Lista de pedidos</a>
-    </p>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" required><br>
 
+            <input type="submit" value="Entrar">
+        </form>
+
+        <p>Não possui uma conta? <a href="CadCliUsu.php">Cadastre-se</a></p>
+    </div>
 </body>
 </html>

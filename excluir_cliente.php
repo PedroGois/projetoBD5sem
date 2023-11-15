@@ -1,32 +1,33 @@
-<?php
-// Verifique se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtenha o ID do cliente a ser excluído
-    $id = $_POST["id"];
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Excluir CLiente</title>
+</head>
+<body>
+    <h1>Excluir Cliente</h1>
 
-    // Conexão com o banco de dados já estabelecida (a partir do seu código)
-    $servidor = 'localhost';
-    $usuario = 'root';
-    $senha = '';
-    $db = 'restaurante';
-    $con = mysqli_connect($servidor, $usuario, $senha, $db);
+    <?php
+    include('conexao.php');
 
-    // Verifique a conexão
-    if (!$con) {
-        die("Erro na conexão com MySQL: " . mysqli_connect_error());
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $sql = "DELETE FROM clientes WHERE id=$id";
+
+        if (mysqli_query($con, $sql)) {
+            echo "Cliente excluído com sucesso!";
+        } else {
+            echo "Erro na exclusão do Cliente: " . mysqli_error($con);
+        }
     }
+    ?>
 
-    // Crie a consulta SQL para excluir o cliente com base no ID
-    $sql = "DELETE FROM clientes WHERE id = $id";
+    <p>
+        <a href="lista_clientes.php">Voltar para Lista de Clientes</a>
+    </p>
 
-    // Execute a consulta SQL
-    if (mysqli_query($con, $sql)) {
-        echo "Cliente excluído com sucesso!";
-    } else {
-        echo "Erro na exclusão do cliente: " . mysqli_error($con);
-    }
-
-    // Feche a conexão com o banco de dados
+    <?php
     mysqli_close($con);
-}
-?>
+    ?>
+</body>
+</html>
