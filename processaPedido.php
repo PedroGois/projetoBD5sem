@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_query($con, $sql_itens)) {
                 echo "Pedido e item inseridos com sucesso!";
+                header("Location:  lista_pedidos.php");
+                exit;
             } else {
                 echo "Erro na inserção do item do pedido: " . mysqli_error($con);
             }
@@ -39,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         echo "Cliente ou produto com o ID especificado não existe na tabela de clientes ou produtos.";
+        
     }
 }
 ?>

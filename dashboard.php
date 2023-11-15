@@ -50,7 +50,9 @@
         <p>
             <a href="lista_pedidos.php">Lista de Pedidos</a>
         </p>
-       
+        <p>
+            <a href="lista_itenspedido.php">Itens Pedidos</a>
+        </p>
     </div>
 </body>
 </html>
