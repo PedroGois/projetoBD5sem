@@ -54,6 +54,16 @@
         <?php
         include('conexao.php');
 
+        if (isset($_GET['msg'])) {
+            $message = $_GET['msg'];
+        
+            if ($message === "success") {
+                echo "Ação concluída com sucesso.";
+            } elseif ($message === "error") {
+                echo "Houve um erro ao realizar a ação.";
+            }
+        }
+
         // Inicializar a consulta SQL base
         $sql = "SELECT * FROM produtos";
 

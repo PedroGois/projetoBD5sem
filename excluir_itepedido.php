@@ -13,18 +13,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         if (mysqli_query($con, $sql_delete_pedido)) {
             // echo "Pedido e produtos associados excluídos com sucesso.";
-            header("Location:  lista_pedidos.php?msg=success");
+            header("Location:  lista_itenspedidos.php?msg=success");
         } else {
             // echo "Erro ao excluir o pedido: " . mysqli_error($con);
-            header("Location:  lista_pedidos.php?msg=error");
+            header("Location:  lista_itenspedidos.php?msg=error");
         }
     } else {
         // echo "Erro ao excluir os produtos associados ao pedido: " . mysqli_error($con);
-        header("Location:  lista_pedidos.php?msg=error");
+        header("Location:  lista_itenspedidos.php?msg=error");
     }
 } else {
     // echo "ID do pedido inválido";
-    header("Location:  lista_pedidos.php?msg=error");
+    header("Location:  lista_itenspedidos.php?msg=error");
 }
 
 mysqli_close($con);

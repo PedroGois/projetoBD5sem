@@ -51,22 +51,26 @@
 
          <table>
             <tr>
+                <th>ID Pedido</th>
                 <th>Nome</th>
                 <th>Qtde em Pedido</th>
+                <th>Exclusão</th>
             </tr>
             <?php
             include('conexao.php');
 
             // Inicializar a consulta SQL base
-            $sql = "SELECT p.nome as nome, sum(ip.qtde) as qtde FROM itens_pedido ip INNER JOIN produtos p on ip.id_produto = p.id group by nome";
+            $sql = "SELECT id_produto, id_pedido,  p.nome as nome, sum(ip.qtde) as qtde FROM itens_pedido ip INNER JOIN produtos p on ip.id_produto = p.id group by nome";
 
             $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
             if(mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
                     echo "<tr>";
+                    echo "<td>" . $row['id_pedido'] . "</td>";
                     echo "<td>" . $row['nome'] . "</td>";
                     echo "<td>" . $row['qtde'] . "</td>";
+                    echo "<td><a href='excluir_itepedido.php?id=".$row['id_pedido']."'>Excluir</a></td>";
                     echo "</tr>";
                 }
             } else {

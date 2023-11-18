@@ -67,6 +67,14 @@
             </tr>
             <?php
             include('conexao.php');
+            if (isset($_GET['msg'])) {
+                $message = $_GET['msg'];
+                if ($message === "success") {
+                    echo "Exclusão concluída com sucesso.";
+                } elseif ($message === "error") {
+                    echo "Houve um erro ao realizar a exclusão.";
+                }
+            }
 
             // Inicializar a consulta SQL base
             $sql = "SELECT pedidos.*, clientes.nome AS nome_cliente

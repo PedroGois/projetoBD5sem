@@ -35,12 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             } else {
                 echo "Erro na inserção do item do pedido: " . mysqli_error($con);
+                header("Location:  inserir_pedido.php");
             }
         } else {
             echo "Erro na inserção do pedido: " . mysqli_error($con);
+            header("Location:  inserir_pedido.php");
         }
     } else {
         echo "Cliente ou produto com o ID especificado não existe na tabela de clientes ou produtos.";
+        header("Location:  inserir_pedido.php");
         
     }
 }

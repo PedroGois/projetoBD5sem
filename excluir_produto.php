@@ -16,8 +16,11 @@
 
         if (mysqli_query($con, $sql)) {
             echo "Produto excluído com sucesso!";
+            header("Location:  lista_produtos.php?msg=success");
+
         } else {
             echo "Erro na exclusão do produto: " . mysqli_error($con);
+            header("Location:  lista_produtos.php?msg=error");
         }
     }
     ?>
