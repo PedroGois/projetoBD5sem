@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Tela Inicial</title>
+    <title>Relatórios</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,22 +40,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Tela Inicial</h1>
+        <h1>Relatórios</h1>
         <p>
-            <a href="lista_clientes.php">Lista de Clientes</a>
+            <a href="relatorioprodutos.php">Produtos</a>
         </p>
         <p>
-            <a href="lista_produtos.php">Lista de Produtos</a>
+            <a href="relatoriopedidos.php">Pedidos</a>
         </p>
-        <p>
-            <a href="lista_pedidos.php">Lista de Pedidos</a>
-        </p>
-        <p>
-            <a href="lista_itenspedido.php">Itens Pedidos</a>
-        </p>
-        <p>
-            <a href="relatorios.php">Relatórios</a>
-        </p>
+    
     </div>
 </body>
 </html>
