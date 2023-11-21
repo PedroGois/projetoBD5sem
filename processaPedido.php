@@ -30,6 +30,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         VALUES ($id_pedido, $produto, $qtde)";
 
             if (mysqli_query($con, $sql_itens)) {
+                
+                $sql_quantidade_estoque = "SELECT qtde_estoque FROM produtos WHERE id = '$produto'";
+
+                $result_quantidade = mysqli_query($con, $sql_quantidade_estoque);
+        
+                if ($result_quantidade) {
+                    $row = mysqli_fetch_assoc($result_quantidade);
+                    $qtde_estoque = $row['qtde_estoque'];
+                    // Verificar se há estoque suficiente
+                    if ( $qtde <= $qtde_estoque) {
+                        // Atualizar a quantidade no estoque
+                        $sql_atualizar_estoque = "UPDATE produtos SET qtde_estoque = qtde_estoque - $qtde WHERE id = '$produto'";
+                        if (mysqli_query($con, $sql_atualizar_estoque)) {
+                            echo "Estoque atualizado com sucesso.";
+        
+                            } else {
+                                echo "Erro ao atualizar o estoque: " . mysqli_error($con);
+                                
+                            }
+                    } else {
+        
+                        echo "Quantidade insuficiente em estoque.". mysqli_error($con);
+                        header("Location:  inserir_pedido.php");
+                        }
+                } else {
+                    echo "Erro ao recuperar a quantidade em estoque: " . mysqli_error($con);
+                    header("Location:  inserir_pedido.php");
+                } 
+
                 echo "Pedido e item inseridos com sucesso!";
                 header("Location:  lista_pedidos.php");
                 exit;
@@ -46,5 +75,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location:  inserir_pedido.php");
         
     }
-}
+
+} 
+
+?>
+
+
+
 ?>
