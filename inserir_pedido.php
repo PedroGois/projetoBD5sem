@@ -61,8 +61,6 @@
 <body>
     <div class="container">
         <h1>Inserir Pedido</h1>
-
-        
         <?php
         $servidor='localhost';
         $usuario='root';
@@ -71,7 +69,7 @@
         $con = mysqli_connect($servidor,$usuario,$senha,$db);
         // Verificando a conexão
         if ($con->connect_error) {
-            die("Erro na conexão: " . $con->connect_error);
+         D   die("Erro na conexão: " . $con->connect_error);
         }
 
         // Executando a query para selecionar os produtos

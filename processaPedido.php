@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_query($con, $sql_itens)) {
                 
                 $sql_quantidade_estoque = "SELECT qtde_estoque FROM produtos WHERE id = '$produto'";
-
                 $result_quantidade = mysqli_query($con, $sql_quantidade_estoque);
         
                 if ($result_quantidade) {

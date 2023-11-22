@@ -44,11 +44,8 @@
 </head>
 <body>
     <div class="container">
-
     <p><a href="dashboard.php">Home</a></p>
-
         <h1>Lista de de itens pedidos</h1>
-
          <table>
             <tr>
                 <th>ID Pedido</th>
@@ -58,12 +55,8 @@
             </tr>
             <?php
             include('conexao.php');
-
-            // Inicializar a consulta SQL base
             $sql = "SELECT id_produto, id_pedido,  p.nome as nome, sum(ip.qtde) as qtde FROM itens_pedido ip INNER JOIN produtos p on ip.id_produto = p.id group by nome";
-
             $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-
             if(mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
                     echo "<tr>";
@@ -79,14 +72,11 @@
             }
             ?>
         </table>
-
         <p>
             <form method="POST" action="dashboard.php">
                 <input type="submit" value="Voltar ao Dashboard">
             </form>
         </p>
-
-
         <?php
         mysqli_close($con);
         ?>
