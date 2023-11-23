@@ -42,10 +42,10 @@
     <div class="container">
         <h1>Relatórios</h1>
         <p>
-            <a href="relatorioprodutos.php">Produtos</a>
+            <a href="pdf_produto.php">Produtos</a>
         </p>
         <p>
-            <a href="relatoriopedidos.php">Pedidos</a>
+            <a href="pdf_pedido.php">Pedidos</a>
         </p>
     
     </div>

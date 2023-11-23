@@ -69,7 +69,7 @@
         $con = mysqli_connect($servidor,$usuario,$senha,$db);
         // Verificando a conexão
         if ($con->connect_error) {
-         D   die("Erro na conexão: " . $con->connect_error);
+           die("Erro na conexão: " . $con->connect_error);
         }
 
         // Executando a query para selecionar os produtos
