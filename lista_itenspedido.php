@@ -55,6 +55,17 @@
             </tr>
             <?php
             include('conexao.php');
+            if (isset($_GET['msg'])) {
+                $message = $_GET['msg'];
+                if ($message === "success") {
+                    echo "Exclusão concluída com sucesso.";
+                } elseif ($message === "error") {
+                    echo "Houve um erro ao realizar a exclusão.";
+                }elseif ($message === "error2") {
+                    echo "Houve um erro ao realizar a exclusão 2.";
+                }
+            }
+
             $sql = "SELECT id_produto, id_pedido,  p.nome as nome, sum(ip.qtde) as qtde FROM itens_pedido ip INNER JOIN produtos p on ip.id_produto = p.id group by nome";
             $result = mysqli_query($con, $sql) or die(mysqli_error($con));
             if(mysqli_num_rows($result) > 0) {
