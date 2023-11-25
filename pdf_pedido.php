@@ -5,8 +5,16 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 
 include('conexao.php');
 
+if (isset($_POST['data_inicial']) && isset($_POST['data_final'])) {
+    $dtini = date('Y-m-d', strtotime($_POST['data_inicial']));
+    $dtfim = date('Y-m-d', strtotime($_POST['data_final']));
+    } else{
+    header("Location: filtropdf_pedido.php?msg=filternotfound");
+    }
+
+
 // Faça a inserção no banco de dados aqui
-$query = "SELECT * FROM produtos ORDER BY nome ";
+$query = "SELECT * FROM pedidos where data >='$dtini' and data <= '$dtfim' ORDER BY id ";
 $result = mysqli_query($con, $query);
 
 $prod = array();
@@ -73,10 +81,11 @@ $html = '
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Quantidade Estoque</th>
-                    <th scope="col">Valor Unitário</th>
-                    <th scope="col">Unidade de Medida</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Id Cliente</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Cond. Pagamento</th>
+                    <th scope="col">Prazo de Entrega</th>
                 </tr>
             </thead>
             <tbody>';
@@ -85,10 +94,11 @@ foreach ($prod as $p) {
     $html .= '
         <tr>
             <td>' . $p['id'] . '</td>
-            <td>' . $p['nome'] . '</td>
-            <td>' . $p['qtde_estoque'] . '</td>
-            <td>' . $p['valor_unitario'] . '</td>
-            <td>' . $p['unidade_medida'] . '</td>
+            <td>' . $p['data'] . '</td>
+            <td>' . $p['id_cliente'] . '</td>
+            <td>' . $p['observacao'] . '</td>
+            <td>' . $p['cond_pagto'] . '</td>
+            <td>' . $p['prazo_entrega'] . '</td>
         </tr>';
 }
 

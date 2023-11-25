@@ -45,7 +45,7 @@
             <a href="pdf_produto.php">Produtos</a>
         </p>
         <p>
-            <a href="pdf_pedido.php">Pedidos</a>
+            <a href="filtropdf_pedido.php">Pedidos</a>
         </p>
     
     </div>
