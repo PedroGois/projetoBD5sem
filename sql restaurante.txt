@@ -1,0 +1,57 @@
+CREATE DATABASE restaurante;
+ 
+USE restaurante;
+ 
+ 
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    numero VARCHAR(10 ) NOT NULL,
+    bairro VARCHAR(80) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado CHAR(2) NOT NULL, 
+    email VARCHAR(100) ,
+    cpf_cnpj VARCHAR(14) NOT NULL,
+    rg VARCHAR(11) ,
+    telefone VARCHAR(15) ,
+    celular VARCHAR(15) NOT NULL,
+    data_nasc DATE NOT NULL
+) ENGINE=InnoDB;
+ 
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    qtde_estoque INT NOT NULL,
+    valor_unitario NUMERIC(12,2) NOT NULL,
+    unidade_medida VARCHAR(4) NOT NULL
+) ENGINE=InnoDB;
+ 
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data DATE NOT NULL,
+    id_cliente INT NOT NULL,
+    observacao VARCHAR(200) ,
+    cond_pagto VARCHAR(20) NOT NULL,
+    prazo_entrega VARCHAR(30) ,
+    FOREIGN KEY (id_cliente) REFERENCES clientes (id)
+) ENGINE=InnoDB;
+ 
+ 
+CREATE TABLE itens_pedido (
+    id_pedido INT,
+    id_produto INT,
+    qtde INT NOT NULL,
+    id_item INT AUTO_INCREMENT PRIMARY KEY,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos (id),
+    FOREIGN KEY (id_produto) REFERENCES produtos (id)
+) ENGINE=InnoDB;
+ 
+ 
+CREATE TABLE login_usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(30) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES clientes (id)
+) ENGINE=InnoDB;
