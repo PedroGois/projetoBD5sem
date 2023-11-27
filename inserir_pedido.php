@@ -75,10 +75,26 @@
         // Executando a query para selecionar os produtos
         $sql = "SELECT id, nome FROM produtos";
         $result = $con->query($sql);
+        // Executando a query para selecionar os produtos
+        $sql2 = "SELECT id, nome FROM clientes";
+        $resultcli = $con->query($sql2);
 
         ?>
 
         <form action="processaPedido.php" method="POST">
+            <label for="id_cliente">Selecione um Cliente:</label>
+            <select name="id_cliente" id="id_cliente">
+                <?php
+                if ($resultcli->num_rows > 0) {
+                    while ($row = $resultcli->fetch_assoc()) {
+                        echo '<option value="' . $row["id"] . '">' . $row["nome"] . '</option>';
+                    }
+                } else {
+                    echo "Nenhum cliente encontrado na tabela.";
+                }
+
+                ?>
+            </select>
             <label for="produto">Selecione um produto:</label>
             <select name="produto" id="produto">
                 <?php
@@ -89,8 +105,6 @@
                 } else {
                     echo "Nenhum produto encontrado na tabela.";
                 }
-
-                // Fechando a conexão após usar os resultados
                 $con->close();
                 ?>
             </select>
@@ -101,8 +115,7 @@
             <label for="data">Data do Pedido:</label>
             <input type="date" name="data" required><br>
 
-            <label for="id_cliente">ID do Cliente:</label>
-            <input type="number" name="id_cliente" required><br>
+           
 
             <label for="observacao">Observação:</label>
             <input type="text" name="observacao"><br>
