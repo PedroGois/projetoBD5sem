@@ -1,9 +1,9 @@
---  phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2023 às 23:09
+-- Tempo de geração: 27/11/2023 às 23:46
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -49,7 +49,8 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `nome`, `endereco`, `numero`, `bairro`, `cidade`, `estado`, `email`, `cpf_cnpj`, `rg`, `telefone`, `celular`, `data_nasc`) VALUES
 (1, 'Gabriel Lopes', 'rua cinco de novembro', '10', 'cambui', 'Itapetininga', 'RS', 'gabriel@br.com', '123456', '123456', '789456', '789456', '2002-11-15'),
-(2, 'Pedro Gois', 'rua perto da rua ', '102', 'vila mazei', 'Itapetininga', 'MS', 'pedro@br.com', '147258', '147258', '369258', '369258', '1902-07-10');
+(2, 'Pedro Gois', 'rua perto da rua ', '102', 'vila mazei', 'Itapetininga', 'MS', 'pedro@br.com', '147258', '147258', '369258', '369258', '1902-07-10'),
+(3, 'brian', 'rua do braia', '10', 'BraiaVille', 'Itapetininga', 'AP', 'braia@br.com', '123654', '123654', '987654', '987654', '2000-08-10');
 
 -- --------------------------------------------------------
 
@@ -69,9 +70,8 @@ CREATE TABLE `itens_pedido` (
 --
 
 INSERT INTO `itens_pedido` (`id_pedido`, `id_produto`, `qtde`, `id_item`) VALUES
-(1, 1, 5, 1),
-(2, 2, 19, 2),
-(3, 1, 1, 3);
+(7, 1, 9, 7),
+(8, 2, 5, 8);
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,8 @@ CREATE TABLE `login_usuarios` (
 
 INSERT INTO `login_usuarios` (`id`, `login`, `senha`, `id_cliente`) VALUES
 (1, 'gabriel@br.com', '$2y$10$X77nvDGS1YVHVcO8kChd3OPrc5SLyYgUrW3UoOb51VpU1QZF9pe3e', 1),
-(2, 'pedro@br.com', '$2y$10$gWPI45spOvgjWS/1o7mQGelx2foyZveDQ0YvgpRQFm9MfbYrpzuLy', 2);
+(2, 'pedro@br.com', '$2y$10$gWPI45spOvgjWS/1o7mQGelx2foyZveDQ0YvgpRQFm9MfbYrpzuLy', 2),
+(3, 'braia@br.com', '$2y$10$hlY8KcfrlldIDgt0jmDBI.6cOrhha8l7TCyB7S6cJMFIoOQ6pMWJG', 3);
 
 -- --------------------------------------------------------
 
@@ -114,9 +115,8 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `data`, `id_cliente`, `observacao`, `cond_pagto`, `prazo_entrega`) VALUES
-(1, '2023-11-27', 1, 'LINDO', 'PIX', '10 dias'),
-(2, '2023-11-27', 2, 'LEGAL', 'PIX', '10 dias'),
-(3, '2023-11-27', 2, 'LEGAL', 'PIX', '15 dias');
+(7, '2023-11-27', 1, 'pix', 'pix', '10 dias'),
+(8, '2020-02-10', 2, 'Velho pedido', 'pix', '5 anos');
 
 -- --------------------------------------------------------
 
@@ -137,8 +137,8 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `qtde_estoque`, `valor_unitario`, `unidade_medida`) VALUES
-(1, 'TV', 4, 1000.00, 'UND'),
-(2, 'SOFA', 1, 1500.00, 'UND'),
+(1, 'TV', 1, 1000.00, 'UND'),
+(2, 'SOFA', 15, 1500.00, 'UND'),
 (3, 'TAPETE', 20, 3000.00, 'CM');
 
 --
@@ -187,25 +187,25 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `login_usuarios`
 --
 ALTER TABLE `login_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
