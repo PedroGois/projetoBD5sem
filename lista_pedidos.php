@@ -69,6 +69,8 @@
                 echo "Exclusão concluída com sucesso.";
             } elseif ($message === "error") {
                 echo "Houve um erro ao realizar a exclusão.";
+            } elseif ($message === "errorcliente") {
+                echo "Houve um erro ao realizar a exclusão do cliente (exclua os pedidos dele).";
             }
         }
  
